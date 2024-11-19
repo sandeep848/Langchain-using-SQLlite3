@@ -48,7 +48,7 @@ except Exception as e:
 @st.cache_resource(ttl="2h")
 def configure_database(db, mysql_host=None, mysql_user=None, mysql_password=None, mysql_db=None):
     if db == LOCAL:
-        file = (pathlib.Path(__file__).parent / "student.db").absolute()
+        file = (pathlib.Path(__file__).parent / "Student.db").absolute()
         create_connection = lambda: sqlite3.connect(f"file:{file}?mode=ro", uri=True)
         return SQLDatabase(create_engine("sqlite:///", creator=create_connection))
     elif db == MYSQL:
